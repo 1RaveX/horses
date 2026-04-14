@@ -1,25 +1,21 @@
 #include "horse.h"
 
-void Horse::move(int dx, int dy, char map[HEIGHT][WIDTH]) {
-    int nextX = x + dx;
-    int nextY = y + dy;
+void Horse::move(int dx, int dy, char mapC[HEIGHT][WIDTH]) {
+    int nX = x + dx;
+    int nY = y + dy;
 
-    if (nextY <= 5 || nextY >= 15 || map[nextY][x] == '-') {
-        // REBOTE: Invertimos la dirección vertical
-        nextY = y - dy; 
+    // si choca con una pared que se devuelva
+    if (nY <= 5 || nY >= 15 || mapC[nY][x] == '-') {
+        nY = y - dy; 
     }
-
-    // Detectar colisión en el eje X (Paredes '|')
-    if (nextX <= 0 || nextX >= 79 || map[y][nextX] == '|') {
-        // REBOTE: Invertimos la dirección horizontal
-        nextX = x - dx;
+    // choca con camino vertical
+    if (nX <= 0 || nX >= 79 || mapC[y][nX] == '|') {
+        nX = x - dx;
     }
-
-    // Finalmente, si la posición tras el rebote es segura, nos movemos
-    // (Añadimos una validación extra por seguridad)
-    if (nextY > 5 && nextY < 15 && nextX > 0 && nextX < 80) {
-        x = nextX;
-        y = nextY;
+    //cambia la posicion
+    if (nY > 5 && nY < 15 && nX > 0 && nX < 80) {
+        x = nX;
+        y = nY;
     }
 
 }

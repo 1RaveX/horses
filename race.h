@@ -6,12 +6,9 @@
 #include "base.h"
 #include "horse.h"
 
-
-
-
 void buildRaceCourse();
 void drawRaceCourse();
-ColisionType detectColision(int x, int y);
+CollisionType detectCollision(int x, int y);
 bool isDetectColition(int x, int y);
 bool isPath(int x, int y);
 

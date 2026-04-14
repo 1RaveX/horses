@@ -36,14 +36,14 @@ void drawRaceCourse() {
     mvprintw(28, 60, "Meta");
 }
 
-ColisionType detectColision(int x, int y) {
-    if(mapC[y][x] == '-') return COLISSION_COL;
-    if(mapC[y][x] == '|') return COLISSION_ROW;
+CollisionType detectCollision(int x, int y) {
+    if(mapC[y][x] == '-') return COLLISION_VERTICAL;
+    if(mapC[y][x] == '|') return COLLISION_HORIZONTAL;
 
     if(y > 15 || y < 5) {
-        return OUT;
+        return OUT_OF_BOUNDS;
     } 
-    return NOT_COLISSION;
+    return NO_COLLISION;
 }
 bool isDetectColition(int x, int y) {
     if(x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
@@ -55,14 +55,12 @@ bool isDetectColition(int x, int y) {
 
 bool isPath(int x, int y) {
     if (x < 0 || x >= WIDTH || y < 0 ||  y >= HEIGHT) return false;
-    
     if (mapC[y][x] == '-' || mapC[y][x] == '|') {
         return false;
     }
     if (y >= 15 || y <= 5) {
         return false;
     }
-
     return true;
 }
 /*
@@ -116,7 +114,7 @@ void runRace() {
 void runRaceRender() {
     while(!raceFinished) {
         clear();
-        drawRaceCourse();
+        drawRaceCourse();   
         for(auto &h : horses) {
             h.display();
         }

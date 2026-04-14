@@ -11,11 +11,11 @@ enum StateRace {
     START,
     FINISH,
 };
-enum ColisionType {
-    COLISSION_COL,
-    COLISSION_ROW,
-    NOT_COLISSION,
-    OUT,
+enum CollisionType {
+    COLLISION_VERTICAL,
+    COLLISION_HORIZONTAL,
+    NO_COLLISION,
+    OUT_OF_BOUNDS,
 };
 
 

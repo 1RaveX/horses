@@ -3,6 +3,8 @@
 #include <mutex>
 std::mutex mtx;
 
+
+// ejemplo de sincronizacion de hilos
 void printMessageData(int count) {
     for (int i = 0; i < count; ++i) {
         std::lock_guard<std::mutex> lock(mtx);
